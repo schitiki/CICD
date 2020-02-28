@@ -1,0 +1,9 @@
+---
+# tasks file for nginx
+- name: Add SFH Site Config
+#  when: nginxinstalled|success
+#  register: sfhconfig
+  template: src=srini.j2 dest=/home/ec2-user/{{ domain  }}.conf owner=ec2-user group=ec2-user
+- debug:
+   var: domain
+

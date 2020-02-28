@@ -1,0 +1,25 @@
+---
+# tasks file for chkDirExists
+- name: Check if directory exists or not
+  stat:
+    path: /tmp/testfile
+  register: output
+- debug:
+    var: output
+
+- name: Create another testfile2 if testfile exists
+  file:
+    path: /tmp/testfile2
+    state: touch
+  when: output.stat.exists == true
+  register: output2
+- debug:
+    var: output2
+
+- name: Create log folder 
+  file:
+    path: "{{ log_dir }} "
+    state: directory 
+  register: output3
+- debug:
+    var: output3

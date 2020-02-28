@@ -1,0 +1,6 @@
+server {
+    # Enforce the use of HTTPS
+    listen 80 default_server;
+    server_name *.{{ domain  }};
+    return 301 https://{{ domain  }}$request_uri;
+}

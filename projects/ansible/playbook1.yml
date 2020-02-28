@@ -1,0 +1,14 @@
+---
+
+- hosts: web 
+#  user: root
+#  port: 22
+#  gather_facts: True
+  roles:
+     - { role: nginx }
+#     - { role: learnConditionals}
+#     - { role: chkDirExists }
+#    - { role: copy, tags: copy}
+#    - { role: chkJenkinsService, tags: apache_status}
+#    - { role: install-tomcat, tags: install-tomcat}
+#    - { role: httpd, tags: httpd }

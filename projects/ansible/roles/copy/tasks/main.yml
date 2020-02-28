@@ -1,0 +1,9 @@
+---
+# tasks file for copy
+- name: copy the file to temp folder
+  copy:
+     src: ~/testfile
+     dest: /tmp/testfile
+     group: ec2-user 
+     owner: ec2-user
+     mode: "0644"
