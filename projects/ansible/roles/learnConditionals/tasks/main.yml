@@ -1,8 +1,24 @@
 ---
 # tasks file for learnCoditionals
 - name: Learn how to use conditionals in ansible
-  command: echo "Srini-> {{ item }}">>/tmp/srini
-  loop: [0,2,4,6,8,10]
+  file:
+   path: /tmp/srini{{ item }}
+   state: touch 
+  loop: [0,2,4,6,8,10,12]
   when: item > 6
-  delegate_to: localhost
 
+- debug:
+    msg: System {{ inventory_hostname }} has gateway {{ ansible_default_ipv4.gateway }}
+  when: ansible_default_ipv4.gateway is defined
+
+# Example that prints return information from the previous task
+- hosts: local
+- shell: /usr/bin/uptime
+  register: result
+
+- debug:
+    var: result
+    verbosity: 2
+- debug:
+    msg: Srini is here-->
+#  delegate_to: 127.0.0.1 
